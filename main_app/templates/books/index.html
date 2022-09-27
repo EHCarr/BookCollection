@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1> Book List</h1>
+{% for book in books %}
+
+<div class="card">
+    <a href="{% url 'detail' book.id %}">
+    <div class="card-content">
+        <div class="flex-container">
+            <div>
+            <span class="card-title"> {{ book.name }}</span>
+            <p>Author: {{ book.author }}</p>
+            <p>Description: {{ book.description }}</p>
+
+            {% if book.read == True %}
+                <p> Read? You've read this book!</p>
+            {% else %}
+                <p> Read? Come on slowpoke, you still need to read this!</p>
+            {% endif %}  
+            </div>
+            
+            <div>
+                {% load static %}
+                <img width="150px" height="270px" src={% static book.image|cut:'main_app/static/' %} />
+            </div>
+
+        </div>
+    </div>
+</a>
+</div>
+    {% endfor %}
+    {% endblock %}

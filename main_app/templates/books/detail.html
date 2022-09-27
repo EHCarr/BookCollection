@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %} 
+
+<h1> Book Details</h1>
+<div class="card">
+    <div class="card-content">
+        <span class="card-title"> {{ book.name }}</span>
+        <p>Author: {{ book.author }}</p>
+        <p>Description: {{ book.description }}</p>
+
+        {% if book.read == True %}
+            <p> Read? You've read this book!</p>
+        {% else %}
+            <p> Read? Come on slowpoke, you still need to read this!</p>
+            {% endif %}
+    </div> 
+</div>
+
+{% endblock %}
