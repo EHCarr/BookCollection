@@ -9,6 +9,7 @@
     <a href="{% url 'detail' book.id %}">
     <div class="card-content">
         <div class="flex-container">
+
             <div>
             <span class="card-title"> {{ book.name }}</span>
             <p>Author: {{ book.author }}</p>
@@ -21,7 +22,7 @@
             {% endif %}  
             </div>
             
-            <div>
+            <div class="right">
                 {% load static %}
                 <img width="150px" height="270px" src={% static book.image|cut:'main_app/static/' %} />
             </div>

@@ -15,6 +15,37 @@
             <p> Read? Come on slowpoke, you still need to read this!</p>
             {% endif %}
     </div> 
+    <div class="card-action">
+        <a href="{% url 'book_update' book.id %}">Edit</a>
+        <a href="{% url 'book_delete' book.id %}">Delete</a>
+    </div>
+</div>
+
+<div>
+
+    <form method="post" action="{% url 'add_quote' book.id %}">
+        {% csrf_token %}   
+        {{ quote_form.as_p }} 
+        <input type="submit" value="Add Quote" class="btn">
+    </form>
+
+    <table class="striped">
+        </thead>
+            <tr>
+                <th> Page </th>
+                <th> Quote </th>
+            </tr>
+        <thead>
+        
+        <tbody>
+            {% for quote in book.quote_set.all %} 
+            <tr>
+                <td> {{ quote.page }} </td>
+                <td> {{ quote.get_quote_display }} </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 
 {% endblock %}
